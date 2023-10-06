@@ -1,8 +1,10 @@
 package main
 
+import "noobee/sesi_1/tugas"
+
 func main() {
-	FunctionMessage()
-	Pointer()
+	tugas.FunctionMessage()
+	tugas.Pointer()
 }
 
 // func main() {
