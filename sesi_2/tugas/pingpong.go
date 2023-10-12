@@ -68,9 +68,12 @@ func play(player *Player, playerChan, done chan *Player, finished chan bool) {
 }
 
 func finish(done chan *Player) {
-	for d := range done {
-		fmt.Println(d.Name, "kalah pada hit ke", d.Hit)
-		close(done)
-	}
-
+	// bisa pakai ini
+	// for d := range done {
+	// 	fmt.Println(d.Name, "kalah pada hit ke", d.Hit)
+	// 	close(done)
+	// }
+	/// atau ini
+	isDone := <-done
+	fmt.Println(isDone.Name, "kalah pada hit ke", isDone.Hit)
 }
