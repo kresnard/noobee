@@ -18,5 +18,7 @@ func ConnectGORMPostgres(cfg config.DB) (db *gorm.DB, err error) {
 	if err != nil {
 		return
 	}
+
+	// db.Debug().AutoMigrate(product.Product{})
 	return
 }

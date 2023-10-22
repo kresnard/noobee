@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"sesi_6/app/product"
 	"sesi_6/config"
 	"sesi_6/pkg/databse"
 
@@ -10,7 +11,7 @@ import (
 
 func main() {
 	router := fiber.New(fiber.Config{
-		AppName: "Produts services",
+		AppName: "Products services",
 		Prefork: true,
 	})
 
@@ -24,9 +25,7 @@ func main() {
 		panic(err)
 	}
 
-	if db != nil {
-		log.Println("db connected")
-	}
+	product.RegisterServiceProduct(router, db, nil)
 
 	router.Listen(config.Cfg.App.Port)
 }
