@@ -40,3 +40,23 @@ func (p PostgreGormRepository) GetByID(ctx context.Context, ID int) (Product, er
 
 	return product, nil
 }
+
+func (p PostgreGormRepository) UpdateByID(ctx context.Context, model Product) (err error) {
+	err = p.db.Save(&model).Error
+
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (p PostgreGormRepository) DeleteByID(ctx context.Context, ID int) (err error) {
+	err = p.db.Where("id = ?", ID).Delete(&Product{}).Error
+
+	if err != nil {
+		return
+	}
+
+	return
+}
