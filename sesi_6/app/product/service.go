@@ -10,14 +10,14 @@ type Repository interface {
 	GetAll(ctx context.Context) ([]Product, error)
 	GetByID(ctx context.Context, ID int) (Product, error)
 	UpdateByID(ctx context.Context, model Product) (err error)
-	DeleteByID(ctx context.Context, model Product) (err error)
+	DeleteByID(ctx context.Context, ID int) (err error)
 }
 
 type Service struct {
-	repo PostgreGormRepository
+	repo Repository
 }
 
-func NewService(repo PostgreGormRepository) Service {
+func NewService(repo Repository) Service {
 	return Service{repo: repo}
 }
 

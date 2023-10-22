@@ -7,8 +7,8 @@ import (
 )
 
 func RegisterServiceProduct(router fiber.Router, db *gorm.DB, dbSqlx *sqlx.DB) {
-	repo := NewRepositoryGormDB(db)
-	// repo := NewPostgresSQLXRepository(dbSqlx)
+	// repo := NewRepositoryGormDB(db)
+	repo := NewPostgresSQLXRepository(dbSqlx)
 
 	service := NewService(repo)
 	handler := NewHandler(service)

@@ -4,7 +4,7 @@ import (
 	"log"
 	"sesi_6/app/product"
 	"sesi_6/config"
-	"sesi_6/pkg/databse"
+	"sesi_6/pkg/database"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -20,12 +20,17 @@ func main() {
 		log.Println("error connect to config.yaml", err.Error())
 	}
 
-	db, err := databse.ConnectGORMPostgres(config.Cfg.DB)
+	db, err := database.ConnectGORMPostgres(config.Cfg.DB)
 	if err != nil {
 		panic(err)
 	}
 
-	product.RegisterServiceProduct(router, db, nil)
+	dbSqlx, err := database.ConnectSqlxPostgres(config.Cfg.DB)
+	if err != nil {
+		panic(err)
+	}
+
+	product.RegisterServiceProduct(router, db, dbSqlx)
 
 	router.Listen(config.Cfg.App.Port)
 }

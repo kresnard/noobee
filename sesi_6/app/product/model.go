@@ -10,11 +10,11 @@ var (
 )
 
 type Product struct {
-	Id       int    `json:"id"`
-	Name     string `json:"name"`
-	Category string `json:"category"`
-	Price    int    `json:"price"`
-	Stock    int    `json:"stock"`
+	Id       int    `json:"id" db:"id"`
+	Name     string `json:"name" db:"name"`
+	Category string `json:"category" db:"category"`
+	Price    int    `json:"price" db:"price"`
+	Stock    int    `json:"stock" db:"stock"`
 }
 
 func (p Product) Validate() (err error) {
