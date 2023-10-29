@@ -1,26 +1,34 @@
 package main
 
-import "strings"
-
-const (
-	// SMTP HOST
-	CONFIG_SMTP_HOST = "smtp.gmail.com"
-	// SMTP PORT
-	CONFIG_SMTP_PORT = 587
-	// Sender Name
-	CONFIG_SENDER_NAME = "Kresna <kresnard@gmail.com>"
-
-	// AUTH EAMAIL FOR GENERATE APP PASSWORD
-	CONFIG_AUTH_EMAIL = "kresnard@gmail.com"
-	// APP PASSWORD THAT HAS BEEN GENERATED
-	CONFIG_AUTH_PASSWORD = "bohm nrnd xyhe qhkg"
+import (
+	"async_smtp/mail"
+	"log"
 )
 
-func sendEmail(to []string, cc []string, subject string, message string) (err error) {
-	body := "From: " + CONFIG_AUTH_EMAIL + "\n" +
-		"To: " + strings.Join(to, ",") + "\n" +
-		"Cc: " + strings.Join(to, ",") + "\n" +
-		"Subject: " + subject + "\n\n" + message
+func main() {
+	// setup email tujuan
+	to := []string{"kranggad@gmail.com"}
 
-	return
+	// setup cc
+	cc := []string{"sosmedkresna@gmail.com"}
+
+	subject := "Tes Email!"
+	// message := "Hello from first email"
+	message := `
+	<html>
+		<body>
+			<h1> Hello From Kresna</h1>
+			<button class="btn btn-primary ">Click Me</button>
+		</body>
+	</html>
+	`
+
+	// panggil sungsi send email
+	// err := mail.SendEmail(to, cc, subject, message)
+	err := mail.SendMailGomail(to, cc, subject, message)
+	if err != nil {
+		panic(err)
+	}
+
+	log.Println("success send mail to", append(to, cc...))
 }
