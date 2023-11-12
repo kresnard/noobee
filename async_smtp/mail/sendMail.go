@@ -14,12 +14,12 @@ const (
 	// SMTP PORT
 	CONFIG_SMTP_PORT = 587
 	// Sender Name
-	CONFIG_SENDER_NAME = "Kresna <kresnard@gmail.com>"
+	CONFIG_SENDER_NAME = "xxxxx <xxxxxx@gmail.com>"
 
-	// AUTH EAMAIL FOR GENERATE APP PASSWORD
-	CONFIG_AUTH_EMAIL = "kresnard@gmail.com"
+	// AUTH EMAIL FOR GENERATE APP PASSWORD
+	CONFIG_AUTH_EMAIL = "xxxxxx@gmail.com"
 	// APP PASSWORD THAT HAS BEEN GENERATED
-	CONFIG_AUTH_PASSWORD = "bohm nrnd xyhe qhkg"
+	CONFIG_AUTH_PASSWORD = "xxxx xxxx xxxx xxxx"
 )
 
 func SendEmail(to []string, cc []string, subject string, message string) (err error) {
